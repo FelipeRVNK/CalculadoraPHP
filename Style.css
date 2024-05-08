@@ -1,15 +1,61 @@
 body {
-    background-color: #000000;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.calculator{
+    padding-left: 17px;
+    border-left: solid 2px rgb(0, 0, 0);
+    padding-right: 17px;
+    border-right: solid 2px rgb(0, 0, 0);
+    padding-top: 17px;
+    border-top: solid 2px rgb(0, 0, 0);
+    padding-bottom: 17px;
+    border-bottom: solid 2px rgb(0, 0, 0);
+}
+.calculator__input{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.calculator__inputs{
+    display: flex;
+    gap: 20px;
+}
+
+.calculator__controls{
+    padding-top: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.parteDeBaixo{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.botoesBaixo{
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    gap: 2px;
+}
+label{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #023548;
 }
 
 h1{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:#8000ff;
+    color:#fd3d03;
     font-size: 50px;
-    border-radius: 20px;  
+    border-radius: 20px;
    
 }
 
@@ -18,7 +64,13 @@ h1{
     flex-direction: row;
     gap: 20px;
 }
-table {
+.historico {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     border-collapse: collapse;
     width: 100%;   
 }
@@ -28,12 +80,12 @@ th, td {
     border: 1px solid #04181f;
     text-align: left;
     padding: 8px;
-    box-shadow: 0 0 10px #8000ff;
+    box-shadow: 0 0 10px #fd7003;
     transition: box-shadow 0.3s ease;
 }
 
 th {
-    background-color: #340167;
+    background-color: #fd3d03;
 }
 .botao-calcular {
     background-color: #494545;
@@ -46,8 +98,8 @@ th {
     }
 
 .botao-calcular:hover {
-    background-color: #8000ff;
+    background-color: #fd3d03;
     }
 .botao-calcular:active {
-    box-shadow: 0 0 10px #8000ff; 
+    box-shadow: 0 0 10px #fd3d03;
 }
