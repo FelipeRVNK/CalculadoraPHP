@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <title>Calculadora php</title>
 
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
 
     <?php
     session_start();
 
+    $calcular = 0;
     $nr1 = 0;
     $nr2 = 0;
     $resultado = 0;
-    $calcular = 0;
 
     function fatoracao($num){
         $fatores = array();
@@ -68,54 +68,63 @@
             'resultado' => $resultado
         );
     }
+    
+    if (isset($_GET['memoria'])) {
+        $_SESSION['memoria'] = array('nr1' => $nr1, 'nr2' => $nr2, 'calcular' => $calcular);
+    }
 
     if (isset($_GET['limpar_historico'])) {
         $_SESSION['historico'] = array();
     }
 
-    if (isset($_GET['memoria'])) {
-        $_SESSION['memoria'] = array('nr1' => $nr1, 'nr2' => $nr2, 'calcular' => $calcular);
-    }
 
     ?>
 </head>
 
 <body>
-    <h1>Calculadora PHP</h1>
+    <h1>-Calculadora PHP-</h1>
 
     <form>
-        <div class="calculator">
-            <div class="calculator__inputs">
-                <div class="calculator__input">
+        <div class="parteDeCima">
+            <div class="inputs_calc">
+                <div class="input_calc">
                     <label for="nr1">Primeiro número:</label>
                     <input type="number" required name="nr1" value=<?php echo $nr1; ?> />
                 </div>
-                <div class="calculator__input">
+                <div class="input_calc">
                     <label for="nr2">Segundo número:</label>
                     <input type="number" required name="nr2" value=<?php echo $nr2; ?> />
                 </div>
             </div>
-            <div class="calculator__controls">
-                <div class="calculator__select">
+            <div class="operacao_btnCalc">
+                <div class="calc_opr">
                     <label for="calcular">Operação:</label>
                     <select name="calcular">
-                        <option value="somar" <?php echo ($calcular == 'somar') ? 'selected' : ''; ?>>Somar</option>
-                        <option value="subtrair" <?php echo ($calcular == 'subtrair') ? 'selected' : ''; ?>>Subtrair</option>
-                        <option value="multiplicar" <?php echo ($calcular == 'multiplicar') ? 'selected' : ''; ?>>Multiplicar</option>
-                        <option value="dividir" <?php echo ($calcular == 'dividir') ? 'selected' : ''; ?>>Dividir</option>
-                        <option value="fatorar" <?php echo ($calcular == 'fatorar') ? 'selected' : ''; ?>>Fatorar</option>
-                        <option value="potencia" <?php echo ($calcular == 'potencia') ? 'selected' : ''; ?>>Potência</option>
+                        <option value="somar" <?php echo ($calcular == 'somar') ? 'selected' : ''; ?>>Somar +</option>
+                        <option value="subtrair" <?php echo ($calcular == 'subtrair') ? 'selected' : ''; ?>>Subtrair -</option>
+                        <option value="multiplicar" <?php echo ($calcular == 'multiplicar') ? 'selected' : ''; ?>>Multiplicar *</option>
+                        <option value="dividir" <?php echo ($calcular == 'dividir') ? 'selected' : ''; ?>>Dividir /</option>
+                        <option value="fatorar" <?php echo ($calcular == 'fatorar') ? 'selected' : ''; ?>>Fatorar n!</option>
+                        <option value="potencia" <?php echo ($calcular == 'potencia') ? 'selected' : ''; ?>>Potência ^</option>
                     </select>
                 </div>
-                <div class="calculator__button">
+                <div class="btn_calcular">
                     <input type="submit" class="botao-calcular" value="Calcular" />
                 </div>
             </div>
         </div>
         <div class="parteDeBaixo">
-            <div class="calculator__result">
+            <div class="resultado">
                 <label>Resultado:</label>
-                <span><?php echo $resultado; ?></span>
+                <span>
+                    <?php 
+                    if(is_array($resultado)) {
+                        echo implode(', ', $resultado); 
+                    } else {
+                        echo $resultado;
+                    }
+                    ?>
+                </span>
             </div>
             <div class="botoesBaixo">
                 <input type="submit" class="botao-calcular" name="limpar_historico" value="Limpar Histórico" />
@@ -124,23 +133,23 @@
         </div>
     </form>
     <div class="historico">
-    <h2>Histórico</h2>
-    <table>
-        <tr>
-            <th>Numero 1</th>
-            <th>Numero 2</th>
-            <th>Operacao</th>
-            <th>Resultado</th>
-        </tr>
-        <?php foreach ($_SESSION['historico'] as $operação) : ?>
+        <h2>Histórico</h2>
+        <table>
             <tr>
-                <td><?php echo $operação['nr1']; ?></td>
-                <td><?php echo $operação['nr2']; ?></td>
-                <td><?php echo $operação['calcular']; ?></td>
-                <td><?php echo is_array($operação['resultado']) ? implode(', ', $operação['resultado']) : $operação['resultado']; ?></td>
+                <th>Numero 1</th>
+                <th>Numero 2</th>
+                <th>Operacao</th>
+                <th>Resultado</th>
             </tr>
-        <?php endforeach; ?>
-    </table>
+            <?php foreach ($_SESSION['historico'] as $operação) : ?>
+                <tr>
+                    <td><?php echo $operação['nr1']; ?></td>
+                    <td><?php echo $operação['nr2']; ?></td>
+                    <td><?php echo $operação['calcular']; ?></td>
+                    <td><?php echo is_array($operação['resultado']) ? implode(', ', $operação['resultado']) : $operação['resultado']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
     </div>
 </body>
 

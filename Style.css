@@ -6,28 +6,24 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
 }
-.calculator{
-    padding-left: 17px;
-    border-left: solid 2px rgb(0, 0, 0);
-    padding-right: 17px;
-    border-right: solid 2px rgb(0, 0, 0);
-    padding-top: 17px;
-    border-top: solid 2px rgb(0, 0, 0);
-    padding-bottom: 17px;
-    border-bottom: solid 2px rgb(0, 0, 0);
+.parteDeCima{
+    border: 2px solid black;
+    padding: 17px;    
 }
-.calculator__input{
+.input_calc{
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-.calculator__inputs{
+.inputs_calc{
     display: flex;
     gap: 20px;
 }
 
-.calculator__controls{
+.operacao_btnCalc{
     padding-top: 30px;
     align-items: center;
     display: flex;
@@ -43,27 +39,44 @@ body {
 .botoesBaixo{
     display: flex;
     flex-direction: row;
-    padding-top: 10px;
+    padding-top: 20px;
     gap: 2px;
-}
-label{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #023548;
 }
 
 h1{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:#fd3d03;
     font-size: 50px;
     border-radius: 20px;
    
 }
-
+select{
+    font-size: 15px;
+    border-radius: 5px;
+    border: 2px solid black;
+    text-align: center;
+    font-weight: bold;
+}
+input{
+    font-size: 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+    text-align: center;
+    font-weight: bold;
+}
 .infoCalc{
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
+
+.resultado{
+    font-weight: 500;
+    font-size: 30px;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 0px 6px;
+}
+
 .historico {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 50px;
@@ -71,22 +84,9 @@ h1{
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border-collapse: collapse;
     width: 100%;   
 }
 
-th, td {
-
-    border: 1px solid #04181f;
-    text-align: left;
-    padding: 8px;
-    box-shadow: 0 0 10px #fd7003;
-    transition: box-shadow 0.3s ease;
-}
-
-th {
-    background-color: #fd3d03;
-}
 .botao-calcular {
     background-color: #494545;
     color: #ffffff; 
@@ -95,11 +95,21 @@ th {
     border-radius: 5px; 
     cursor: pointer;
     transition: box-shadow 0.3s ease;
-    }
+}
 
 .botao-calcular:hover {
     background-color: #fd3d03;
-    }
-.botao-calcular:active {
-    box-shadow: 0 0 10px #fd3d03;
 }
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+td{
+    border: 2px solid black;
+}
+th {
+    background-color: #fd3d03;
+    border-radius: 2px;
+}
+
